@@ -1,8 +1,9 @@
 import path from "path";
-import { fileURLToPath } from 'url';
+import { fileURLToPath } from "url";
 import express from "express";
 import morgan from "morgan";
-import { engine } from "express-handlebars";
+import { create } from "express-handlebars";
+const hbs = create({ extname: "hbs" });
 
 const app = express();
 
@@ -10,8 +11,8 @@ const app = express();
 app.use(morgan("combined"));
 
 // Template engine
-app.engine("handlebars", engine());
-app.set("view engine", "handlebars");
+app.engine("hbs", hbs.engine);
+app.set("view engine", "hbs");
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 app.set("views", path.join(__dirname, "resources/views"));
