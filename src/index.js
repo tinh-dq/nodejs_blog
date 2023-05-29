@@ -7,14 +7,16 @@ const hbs = create({ extname: "hbs" });
 
 const app = express();
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+app.use(express.static(path.join(__dirname, "public")));
+
 // HTTP Logger
 app.use(morgan("combined"));
 
 // Template engine
 app.engine("hbs", hbs.engine);
 app.set("view engine", "hbs");
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 app.set("views", path.join(__dirname, "resources/views"));
 
 app.get("/", function (req, res) {
