@@ -23,5 +23,12 @@ app.get("/", function (req, res) {
   res.render("home");
 });
 
+app.get("/search", function (req, res) {
+  res.render("search");
+});
+
+app.get("/news", function (req, res) {
+  res.render("news");
+})
 app.listen(3000);
 // localhost:3000
