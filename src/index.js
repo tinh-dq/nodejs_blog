@@ -11,6 +11,14 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 app.use(express.static(path.join(__dirname, "public")));
 
+// middleware
+app.use(
+  express.urlencoded({
+    extended: true,
+  })
+);
+app.use(express.json());
+
 // HTTP Logger
 app.use(morgan("combined"));
 
@@ -24,11 +32,17 @@ app.get("/", function (req, res) {
 });
 
 app.get("/search", function (req, res) {
+  console.log(req.query);
   res.render("search");
+});
+
+app.post("/search", function (req, res) {
+  console.log(req.body);
+  res.send("searching");
 });
 
 app.get("/news", function (req, res) {
   res.render("news");
-})
+});
 app.listen(3000);
 // localhost:3000
