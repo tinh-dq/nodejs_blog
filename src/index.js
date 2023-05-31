@@ -9,6 +9,10 @@ app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 // import route to express
 const route = require('./routes');
+const db = require('./config/db');
+
+// Database connection
+db.connect();
 
 app.use(express.static(path.join(__dirname, 'public')));
 
