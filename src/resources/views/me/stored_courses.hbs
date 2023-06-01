@@ -6,8 +6,7 @@
         <th scope="col">#</th>
         <th scope="col">Tên khóa học</th>
         <th scope="col">Thời gian tạo</th>
-        <th scope="col">Lần sửa cuối</th>
-        <th scope="col"></th>
+        <th scope="col" colspan="3">Lần sửa cuối</th>
       </tr>
     </thead>
     <tbody>
@@ -17,7 +16,8 @@
         <td>{{this.name}}</td>
         <td>{{this.createdAt}}</td>
         <td>{{this.updatedAt}}</td>
-        <td><button type="button" class="btn btn-primary btn-lg">Sửa</button></td>        
+        <td><a href="/course/{{this._id}}/edit" class="btn btn-link">Sửa</a></td>  
+        <td><a href="/course/{{this._id}}/delete" class="btn btn-link">Xóa</a></td>  
       </tr>
       {{/each}}
     </tbody>
