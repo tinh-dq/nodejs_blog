@@ -4,7 +4,10 @@ const app = express();
 // HTTP Logger
 const morgan = require('morgan');
 const create = require('express-handlebars').create;
-const hbs = create({ defaultLayout: 'main', extname: '.hbs' });
+const hbs = create({
+    extname: '.hbs',
+    helpers: { sum: (a, b) => a + b },
+});
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 // import route to express
