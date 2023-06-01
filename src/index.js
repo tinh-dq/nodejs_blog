@@ -1,11 +1,14 @@
 const path = require('path');
+// Express
 const express = require('express');
 const app = express();
 // HTTP Logger
 const morgan = require('morgan');
+// Handlebars
 const create = require('express-handlebars').create;
 const hbs = create({
     extname: '.hbs',
+    // for custom index in handlebars
     helpers: { sum: (a, b) => a + b },
 });
 app.engine('hbs', hbs.engine);
