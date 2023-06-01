@@ -10,6 +10,6 @@ router.get('/:slug', courseController.show);
 // edit course
 router.get('/:id/edit', courseController.edit);
 // update course
-router.post('/:id', courseController.update);
+router.put('/:id', courseController.update);
 
 module.exports = router;
