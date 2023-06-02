@@ -9,7 +9,7 @@ class CourseController {
                     course: mongooseToObject(course),
                 });
             })
-            .catch((err) => console.error(err));
+            .catch(next);
     }
     edit(req, res, next) {
         Course.findById(req.params.id)
@@ -18,7 +18,7 @@ class CourseController {
                     course: mongooseToObject(course),
                 });
             })
-            .catch((err) => console.error(err));
+            .catch(next);
     }
     create(req, res, next) {
         res.render('courses/create');
@@ -31,10 +31,21 @@ class CourseController {
         res.send('course created successfully');
     }
     update(req, res, next) {
-        console.log(req.body, req.params);
-        Course.updateOne({ _id: req.params.id }, req.body).then(() => {
-            res.redirect('/me/stored/courses');
-        });
+        // console.log(req.body, req.params);
+        Course.updateOne({ _id: req.params.id }, req.body)
+            .then(() => {
+                res.redirect('/me/stored/courses');
+            })
+            .catch(next);
+    }
+    // DELETE /course/:id
+    destroy(req, res, next) {
+        // console.log(req.body, req.params);
+        Course.deleteOne({ _id: req.params.id })
+            .then(() => {
+                res.redirect('back');
+            })
+            .catch(next);
     }
 }
 
